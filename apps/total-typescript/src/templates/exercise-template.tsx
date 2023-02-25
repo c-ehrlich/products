@@ -102,6 +102,17 @@ const ExerciseTemplate: React.FC<{
             <article className="relative flex-shrink-0 sm:bg-black/20 2xl:bg-transparent">
               <div className="relative z-10 mx-auto max-w-4xl px-5 py-5 lg:py-6 2xl:max-w-xl">
                 <LessonTitle />
+                <button
+                  className="bg-red-500 p-4"
+                  onClick={() => {
+                    console.log('videoProvider onModuleEnded onSettled')
+                    utils.moduleProgress.bySlug.invalidate({
+                      slug: module.slug.current,
+                    })
+                  }}
+                >
+                  INVALIDATE MODULE PROGRESS
+                </button>
                 <GitHubLink exercise={lesson} module={module} />
                 <LessonDescription />
                 {(lesson._type === 'solution' ||
